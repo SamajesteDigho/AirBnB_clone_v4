@@ -83,4 +83,21 @@ window.onload = function () {
     }
     $('DIV.amenities H4').text(content.join(', '));
   });
+
+  $('SECTION.filters BUTTON').on('click', function () {
+    fetch(backendURL + '/places_search/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amenities: checkedAmenities })
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      $('SECTION.places').empty();
+      data.forEach(place => {
+        $.get(backendURL + '/users/' + place.user_id, function (user, status) {
+          $('SECTION.places').append(createArticle(place, user));
+        });
+      });
+    });
+  });
 };
