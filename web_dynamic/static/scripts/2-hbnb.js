@@ -1,8 +1,8 @@
 #!/usr/bin/node
 // The 1-hbnb script
-let checkedAmenities = {};
+const checkedAmenities = {};
 $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
-  if (data.status == 'OK') {
+  if (data.status === 'OK') {
     $('DIV#api_status').addClass('available');
   } else {
     $('DIV#api_status').removeClass('available');
@@ -11,7 +11,7 @@ $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
 
 window.onload = function () {
   $('DIV.amenities DIV.popover UL LI INPUT').on('click', function () {
-    let dataId = this.getAttribute('data-id');
+    const dataId = this.getAttribute('data-id');
     const dataName = this.getAttribute('data-name');
     if (dataId in checkedAmenities) {
       delete checkedAmenities[dataId];
