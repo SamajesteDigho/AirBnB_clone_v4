@@ -67,6 +67,15 @@ function createArticle (place, user) {
   div4.innerHTML = place.description ? place.description : '';
   article.appendChild(div4);
 
+  const div5 = document.createElement('div');
+  div5.setAttribute('class', 'reviews');
+  const div51 = document.createElement('h2');
+  div51.innerHTML = 'Reviews';
+  const div52 = document.createElement('ul');
+  div5.appendChild(div51);
+  div5.appendChild(div52);
+  article.appendChild(div5);
+
   return article;
 }
 
